@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb://localhost:27017/new"
+const mongoURI =
+  'mongodb+srv://irahularora:MP02fEEYOEN3ndA9@cluster0.nqrp5ng.mongodb.net/mynotebook?retryWrites=true&w=majority';
 
-const connectToMongo = () =>{
-    mongoose.connect(mongoURI, () =>{
-        console.log('connected to db')
-    })
-}
+const connectToMongo = async () => {
+  try {
+    await mongoose.connect(mongoURI);
+    console.log('Connected to the database');
+    return true;
+  } catch (error) {
+    console.log('Error connecting to the database:', error);
+    return false;
+  }
+};
 
-module.exports =connectToMongo
+module.exports = connectToMongo;
